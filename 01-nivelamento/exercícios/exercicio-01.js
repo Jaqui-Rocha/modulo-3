@@ -5,6 +5,17 @@ let idCount = 0
 // Parametros: modelo(string), cor(string), ano(number)
 // Returno(Objeto): id(string), modelo(string), cor(string), ano(number), createdAt(Date)
 function createCar(modelo, cor, ano) {
+idCount= idCount + 1
+const obj={
+    id: idCount,
+    modelo: modelo,
+    cor: cor,
+    ano: ano,
+    createAt: new Date()
+}
+repository.push(obj)
+console.log(repository)
+return obj
 
 }
 

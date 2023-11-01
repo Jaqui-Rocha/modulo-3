@@ -11,7 +11,22 @@
 
 let studentCount = 0
 
-function makeStudent(data) {
+function makeStudent(name, className, status,document ) {
+  const code = crypto.randomUUID()
+  const createAt = new Date()
+  if(status !== 'matriculado' && status!== 'pendente'){
+    console.error( 'O status deve ser "matriculado" ou "pendente" ')
+  }
+  
+  const student= {
+    code,
+    name,
+    class: className,
+    status,
+    document,
+    createAt
+  }
+  return student
 }
 
 // Crie as funçao para manipular a constante repository
@@ -23,19 +38,29 @@ function makeStudent(data) {
 // - Deletar.
 
 const repository = []
-
+// adiciona o obj ao banco
 function createStudentRepository(data) {
+  student1= createStudentRepository(data)//outra forma de criar obj
+repository.push(student1)
 }
-
+// valida se o estudante ja esta no banco de dados antes de atualizar
 function updateStudentRepository(code, data) {
+  if (repository.includes(code)){
+   repository.push(...data)
+  }
+  
 }
-
+// tratar erro caso n exista estudante com esse cod.
 function findStudentByCodeRepository(code) {
+  if (!repository.includes(code)){
+  console.error('Estudante não encontrado', error)
+  }
 }
-
+//procurar o estudante pela classe
 function findStudentByClassRepository(className) {
+  repository.filter((item) => repository.length (item === className))
 }
-
+//tratar erro para estudante que  n usa esse código
 function deleteStudentByCode(code) {
 }
 
